@@ -13,8 +13,8 @@ class UpdateContactRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:5', 'max:255'],
-            'contact' => [ 'string', 'digits:9', Rule::unique('contacts', 'contact')->ignore($this->route('contact'))],
-            'email' => [ 'string', 'email', Rule::unique('contacts', 'email')->ignore($this->route('contact'))],
+            'contact' => [ 'string', 'digits:9', Rule::unique('contacts', 'contact')->ignore($this->route('id'))],
+            'email' => [ 'string', 'email', Rule::unique('contacts', 'email')->ignore($this->route('id'))],
         ];
     }
 }

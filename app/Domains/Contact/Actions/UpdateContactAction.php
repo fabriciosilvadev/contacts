@@ -17,11 +17,10 @@ class UpdateContactAction
     ) {
     }
 
-    public function handle(UpdateContactData $data): Builder|array|Collection|Model
+    public function handle($data): Builder|array|Collection|Model
     {
-
-        $contact = $this->contact->query()->findOrFail($data->id);
-        $contact->update($data->toArray());
+        $contact = $this->contact->query()->findOrFail($data['id']);
+        $contact->update($data);
 
         return $contact;
     }

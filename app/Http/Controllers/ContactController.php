@@ -40,15 +40,16 @@ class ContactController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(CreateContactRequest $request,
-                          CreateContactAction $action,
-                          CreateContactData $data)
+                          CreateContactAction $action)
     {
+        dd($request->validated());
+        $validatedData = $request->validated();
 
         $contact = $this->db->transaction(
-            fn () => $action->handle($data->from([
-                ...$request->validated(),
-            ]))
+            fn () => $action->handle($validatedData)
         );
+
+
 
         if ($contact){
             return redirect()->route('contacts.index')
@@ -87,16 +88,15 @@ class ContactController extends Controller
      */
     public function update(UpdateContactRequest $request,
                            UpdateContactAction $action,
-                           UpdateContactData $data,
-                           Contact $contact)
+                           int $contact)
     {
         $validated = $request->validated();
 
         $db = $this->db->transaction(
-            fn () => $action->handle($data->from([
+            fn () => $action->handle([
                 ...$validated,
-                'id' => $contact->id
-            ]))
+                'id' => $contact
+            ])
         );
 
         if ($db){

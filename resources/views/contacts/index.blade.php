@@ -63,7 +63,7 @@
                             <div class="d-flex justify-content-between">
                                 <a
                                     class="btn btn-info btn-sm"
-                                    href="{{ route('contacts.show.unauth',$contact->id) }}">
+                                    href="{{ route('contacts.show',$contact->id) }}">
                                     Show
                                 </a>
                                 @auth

@@ -16,7 +16,7 @@ class PaginationQuery
 
     public function handle(): LengthAwarePaginator
     {
-        $perPage = 2;
+        $perPage = 8;
 
         return $this->contact
             ->query()

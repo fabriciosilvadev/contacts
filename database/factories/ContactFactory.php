@@ -18,7 +18,7 @@ class ContactFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'contact' => fake()->unique()->fake()->randomNumber(9, true),
+            'contact' => fake()->unique()->randomNumber(9, true),
             'email' => fake()->unique()->safeEmail(),
         ];
     }

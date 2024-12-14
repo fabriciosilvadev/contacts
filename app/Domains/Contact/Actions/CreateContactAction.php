@@ -14,10 +14,10 @@ class CreateContactAction
     ) {
     }
 
-    public function handle(CreateContactData $data): Contact
+    public function handle($data): Contact
     {
         /** @var Contact $contact */
-        $contact = $this->contact->query()->create($data->toArray());
+        $contact = $this->contact->query()->create($data);
 
         return $contact;
     }

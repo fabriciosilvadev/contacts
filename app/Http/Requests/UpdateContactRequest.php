@@ -12,8 +12,8 @@ class UpdateContactRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => [ 'string', 'max:255'],
-            'contact' => [ 'string', Rule::unique('contacts', 'contact')->ignore($this->route('contact'))],
+            'name' => ['required', 'string', 'min:5', 'max:255'],
+            'contact' => [ 'string', 'digits:9', Rule::unique('contacts', 'contact')->ignore($this->route('contact'))],
             'email' => [ 'string', 'email', Rule::unique('contacts', 'email')->ignore($this->route('contact'))],
         ];
     }

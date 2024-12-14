@@ -10,9 +10,10 @@
                     View All Contacts
                 </a>
 
-                <div>
+                <div class="d-flex justify-content-between align-items-center">
                 @auth
                 <a
+                    style="margin: 10px"
                     class="btn btn-outline-success"
                     href="{{ route('contacts.edit',$contact->id) }}">
                     Edit

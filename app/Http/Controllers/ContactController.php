@@ -25,7 +25,7 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = $this->paginationQuery->handle();
-        return view('contacts.index', compact('contacts'));
+        return view('contacts.index', ['contacts' => $contacts]);
     }
 
     /**

@@ -42,14 +42,11 @@ class ContactController extends Controller
     public function store(CreateContactRequest $request,
                           CreateContactAction $action)
     {
-        dd($request->validated());
         $validatedData = $request->validated();
 
         $contact = $this->db->transaction(
             fn () => $action->handle($validatedData)
         );
-
-
 
         if ($contact){
             return redirect()->route('contacts.index')
@@ -103,7 +100,7 @@ class ContactController extends Controller
             return redirect()->route('contacts.index')
                 ->with('success','Contact updated with successfully!');
         }else{
-            return redirect()->route('contacts.update', $contactItem->id)
+            return redirect()->route('contacts.update', $contact)
                 ->with('error','There was an error. Please try again!!');
         }
     }
